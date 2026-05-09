@@ -1,19 +1,7 @@
 import socket
 import threading
+import tkinter as tk
 from scapy.all import ARP, Ether, srp
-
-
-def scan_port(target, port):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.settimeout(1)
-        if s.connect_ex((target, port)) == 0:
-            print(f"Port {port} is OPEN")
-
-def threaded_scan(target, ports):
-    threads = [threading.Thread(target=scan_port, args=(target, p)) for p in ports]
-    for t in threads: t.start()
-    for t in threads: t.join()
-
 def find_ip(target_ip):
 
     
@@ -35,13 +23,19 @@ def find_ip(target_ip):
     print("IP" + " "*18+"MAC")
     for client in clients:
         print("{:16}    {}".format(client['ip'], client['mac']))
-    
+menu = tk.Tk()
+menu.geometry("300x200")
 
+def scan_port(target, port):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.settimeout(1)
+        if s.connect_ex((target, port)) == 0:
+            print(f"Port {port} is OPEN")
 
-# Button to retrieve the value
-
+def threaded_scan(target, ports):
+    threads = [threading.Thread(target=scan_port, args=(target, p)) for p in ports]
+    for t in threads: t.start()
+    for t in threads: t.join()
 # Usage: threaded_scan("127.0.0.1", range(1, 1025))
-find_ip("192.168.1.0/24")
-ip = input("ip address do you want to scan for ports from teh list of ports")
-threaded_scan(ip,range(1,1025))
-
+threaded_scan("127.0.0.1",range(1,1025))
+find_ip("192.168.1.1/24")
