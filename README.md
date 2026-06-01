@@ -1,2 +1,2 @@
 # Port-Scanner
-It scans ports
+It scans ports with pyhton.It uses the frame work scappy.It checks for all broadcsting ports which would be the ones you can interact with and the ones that you would want to do things with.It also marks what certain ports are for like ssh is 22.To use it just download the .exe and run it on any hardwar that has windows or even linux and mac with the wine software.It used multi threaded scanning to make it effcient.It is only CLI.
