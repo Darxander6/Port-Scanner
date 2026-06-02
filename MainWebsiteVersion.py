@@ -67,4 +67,4 @@ if st.button("Launch scan", type = "primary"):
             for index, op in enumerate(sorted(open_ports)):
                 cols[index % 4].metric(label = "Open Port", value = f"Port {op}")
         else:
-            st.info("Scan completed. No open ports discovered in that specsefic range.")
+            st.info("Scan completed. No open ports discovered in that specific range.")
