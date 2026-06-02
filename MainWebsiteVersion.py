@@ -42,7 +42,7 @@ if st.button("Launch scan", type = "primary"):
 
     total_ports = len(ports_to_scan)
     open_ports = []
-    log_area = st.code("",language=bash)
+    log_area = st.code("",language= "bash")
     log_stream = "In itailizing scan...\n"
     log_area.code(log_stream, language = "bash")
 
