@@ -42,8 +42,8 @@ if st.button("Launch scan", type = "primary"):
 
     total_ports = len(ports_to_scan)
     open_ports = []
-    log_stream = "Initailizing scan...\n"
-    log_area.code(log_stream, langauge = "bash")
+    log_stream = "In itailizing scan...\n"
+    log_area.code(log_stream, language = "bash")
 
 
     with ThreadPoolExecutor(max_workers = max_threads) as executer:
