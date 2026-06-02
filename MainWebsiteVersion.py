@@ -36,7 +36,7 @@ if st.button("Launch scan", type = "primary"):
     if end_port <start_port:
         st.error("Ending port must be greater than or equal to starting port.")
         st.stop()
-    progress_bar= st.progress(0,0)
+    progress_bar= st.progress(0.0)
     status_text = st.empty()
     ports_to_scan = list(range(int(start_port), int(end_port) + 1))
 
