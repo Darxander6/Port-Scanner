@@ -47,7 +47,7 @@ if st.button("Launch scan", type = "primary"):
     log_area.code(log_stream, language = "bash")
 
 
-    with ThreadPoolExecutor(max_workers = max_threads) as executer:
+    with ThreadPoolExecutor(max_workers = max_threads) as executor:
         futures = {executor.submit(check_port, target_ip, p) : p for p in ports_to_scan}
         for i, future in enumerate(as_completed(futures)):
             port = futures[future]
@@ -63,8 +63,8 @@ if st.button("Launch scan", type = "primary"):
         status_text.text("Scan Completed!")
         if open_ports:
             st.success(f"Completed! Discovered {len(open_ports)} open ports(s).")
-            cols = st.columns*min(len(open_ports), 4)
+            cols = st.columns(min(len(open_ports), 4))
             for index, op in enumerate(sorted(open_ports)):
-                col[index % 4].metric(label = "Open Port", value = f"Port {op}")
+                cols[index % 4].metric(label = "Open Port", value = f"Port {op}")
         else:
             st.info("Scan completed. No open ports discovered in that specsefic range.")
